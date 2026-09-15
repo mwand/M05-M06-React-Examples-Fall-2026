@@ -1,16 +1,16 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
-import SingletonClockFactory from "../../Shared/Classes/SingletonClockFactory";
-import { type IClock } from "../../Shared/types";
+import SingletonClockFactory from "../../Shared/Classes/Ticker";
+import { type ITicker } from "../../Shared/types";
 
 //
-type ClockDisplayData = { key: number; name: string; clock: IClock };
+type ClockDisplayData = { key: number; name: string; clock: ITicker };
 
 import ClockDisplay from "../../Shared/Components/ClockDisplay";
 
 // static data for a display
-function makeClockDisplayData(key: number, clock: IClock): ClockDisplayData {
+function makeClockDisplayData(key: number, clock: ITicker): ClockDisplayData {
   return { key: key, name: "clock " + key, clock: clock };
 }
 
@@ -40,7 +40,7 @@ function makeTableRow(element: JSX.Element, key: number): JSX.Element {
 }
 
 export default function App() {
-  const [clock, _] = useState<IClock>(SingletonClockFactory.getInstance(1000));
+  const [clock, _] = useState<ITicker>(SingletonClockFactory.getInstance(1000));
 
   // static data for the clocks displays
   const [clockDisplayData, setClockDisplayData] = useState<ClockDisplayData[]>([]);
@@ -70,7 +70,9 @@ export default function App() {
   // add a clock display for the first render
   // not sure how else to fix this :(
   // eslint-disable-next-line
-    useEffect(() => {handleAdd()}, [])
+  useEffect(() => {
+    handleAdd();
+  }, []);
 
   return (
     <VStack>

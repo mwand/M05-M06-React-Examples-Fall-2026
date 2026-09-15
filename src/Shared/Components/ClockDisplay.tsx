@@ -1,15 +1,16 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Box, Button, HStack, Icon, IconButton, usePrevious } from "@chakra-ui/react";
-import { AiOutlineDelete, AiOutlinePlus } from "react-icons/ai";
-import { type IClock } from "../types";
+import { AiOutlineDelete, AiOutlinePlus, AiOutlineReload, AiOutlineStop } from "react-icons/ai";
+import { type ITicker } from "../types";
 
 export default function ClockDisplay(props: {
   name: string;
   key: number;
-  clock: IClock;
-  handleDelete: () => void;
-  handleAdd: () => void;
+  clock: ITicker;
+  handleDelete?: () => void;
+  handleAdd?: () => void;
+  handleReset?: () => void;
 }): JSX.Element {
   const [localTime, setLocalTime] = useState(0);
   const incrementLocalTime = () => {
@@ -23,21 +24,30 @@ export default function ClockDisplay(props: {
       incrementLocalTime();
     };
     props.clock.addListener(listener1);
-    console.log(`ClockDisplay ${props.name} is mounting`);
+    console.log(`ClockDisplay ${props.name} is mounting`)
+    // the clock doesn't start by itself
+    clock.start();
     return () => {
       console.log("ClockDisplay " + props.name + " is unmounting");
       props.clock.removeListener(listener1);
     };
   }, [props.clock, props.name]);
 
-  // if you put {clock.stop} in the call to Button,
-  // it doesn't work. Somehow or other, it gets the wrong value of 'this'.
   function handleStop() {
     clock.stop();
   }
 
   function handleStart() {
     clock.start();
+  }
+
+  // reset local time to 0, but the clock keeps running
+  // also tell the parent that we've hit reset
+  // (it's up to the parent to decide whether to reset this clock's siblings)
+  function handleReset() {
+    setLocalTime(0);
+
+    props.handleReset?.();
   }
 
   return (
@@ -49,11 +59,18 @@ export default function ClockDisplay(props: {
       <Button aria-label={"start"} onClick={handleStart}>
         Start
       </Button>
-      <Button aria-label={"stop"} onClick={handleStop}>
+      <Button aria-label={"stop"} onClick={handleStop} leftIcon={<AiOutlineStop />}>
         Stop
       </Button>
-      <IconButton aria-label={"delete"} onClick={props.handleDelete} icon={<AiOutlineDelete />} />
-      <IconButton aria-label={"add"} onClick={props.handleAdd} icon={<AiOutlinePlus />} />
+      <Button aria-label={"reset"} onClick={handleReset} leftIcon={<AiOutlineReload />}>
+        Reset
+      </Button>
+      {props.handleDelete && (
+        <IconButton aria-label={"delete"} onClick={props.handleDelete} icon={<AiOutlineDelete />} />
+      )}
+      {props.handleAdd && (
+        <IconButton aria-label={"add"} onClick={props.handleAdd} icon={<AiOutlinePlus />} />
+      )}
     </HStack>
   );
 }

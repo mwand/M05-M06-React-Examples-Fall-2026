@@ -2,7 +2,7 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
 // import { Clock } from '../../Classes/Clock'
-import { type IClock } from "../../Shared/types";
+import { type ITicker } from "../../Shared/types";
 import useClockDisplayList from "./useClockDisplayList";
 
 // hmm, can this be refactored more to get rid of the formatting
@@ -18,7 +18,7 @@ function makeClockDisplayData(key: number): ClockDisplayData {
 // assemble a ClockDisplay component from the static and dynamic data
 export function makeClockDisplay(
   data: ClockDisplayData,
-  clock: IClock,
+  clock: ITicker,
   handleAdd: () => void,
   handleDelete: (key: number) => void,
 ): JSX.Element {

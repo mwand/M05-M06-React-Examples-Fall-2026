@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { type IClock } from "../Shared/types";
+import { type ITicker } from "../Shared/types";
 import { useClock } from "../Shared/Hooks/useClock";
 import { Box, Button, Heading, HStack, VStack, IconButton } from "@chakra-ui/react";
 import {
@@ -21,7 +21,7 @@ export function ClockDisplay(props: {
 }) {
   const [localTime, setLocalTime] = useState(0);
   const incrementLocalTime = () => setLocalTime((localTime) => localTime + 1);
-  const clock: IClock = useClock(incrementLocalTime);
+  const clock: ITicker = useClock(incrementLocalTime);
 
   return (
     <HStack>

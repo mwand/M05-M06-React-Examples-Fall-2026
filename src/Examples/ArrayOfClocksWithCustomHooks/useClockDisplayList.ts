@@ -1,8 +1,8 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
-import SingletonClockFactory from "../../Shared/Classes/SingletonClockFactory";
-import { type IClock } from "../../Shared/types";
+import SingletonClockFactory from "../../Shared/Classes/Ticker";
+import { type ITicker } from "../../Shared/types";
 
 //
 type ClockDisplayData = { key: number; name: string };
@@ -15,7 +15,7 @@ function makeClockDisplayData(key: number): ClockDisplayData {
 }
 
 export default function useClockDisplayList() {
-  const [clock, _] = useState<IClock>(SingletonClockFactory.getInstance(1000));
+  const [clock, _] = useState<ITicker>(SingletonClockFactory.getInstance(1000));
 
   // static data for the clocks displays
   const [clockDisplayData, setClockDisplayData] = useState<ClockDisplayData[]>([]);
@@ -54,7 +54,7 @@ export default function useClockDisplayList() {
   // add a clock display for the first render
   // not sure how else to fix this :(
   // eslint-disable-next-line
-    // useEffect(() => {handleInitialAdd()}, [])
+  // useEffect(() => {handleInitialAdd()}, [])
 
   return {
     handleAdd: handleAdd,

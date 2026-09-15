@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import SingletonClockFactory from "../Classes/SingletonClockFactory";
-import { type IClock } from "../types";
+import SingletonClockFactory from "../Classes/Ticker";
+import { type ITicker } from "../types";
 
 // takes a listener function as an argument
 // returns the clock object
-export function useClock(listener1: () => void): IClock {
+export function useClock(listener1: () => void): ITicker {
   const clock = SingletonClockFactory.getInstance(1000);
   useEffect(() => {
     clock.addListener(listener1);

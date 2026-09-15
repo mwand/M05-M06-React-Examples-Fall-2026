@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Heading, VStack } from "@chakra-ui/react";
 
 import ClockDisplay from "../../Shared/Components/ClockDisplay";
-import SingletonClock from "../../Shared/Classes/SingletonClockFactory";
+import SingletonClock from "../../Shared/Classes/Ticker";
 
 function doNothing() {}
 

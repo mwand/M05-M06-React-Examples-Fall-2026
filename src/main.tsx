@@ -27,7 +27,9 @@ import { ChakraProvider } from "@chakra-ui/react";
 // import App from "./Examples/ArrayOfClocks/App"
 // import App from "./Examples/ArrayOfClocksWithCustomHooks/App"
 
-import App from "./Examples/ToDoApp/App"
+import App  from "./Examples/SimpleClock/App"
+
+// import App from "./Examples/ToDoApp/App"
 // import App from "./Examples/ToDoAppWithCustomHooks/App"
 
 // import App from "./Examples/useEffect-demo"
