@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
-import SingletonClockFactory from "../../Classes/SingletonClockFactory";
-import { type IClock } from "../../types";
+import SingletonClockFactory from "../../Shared/Classes/SingletonClockFactory";
+import { type IClock } from "../../Shared/types";
 
 //
 type ClockDisplayData = { key: number; name: string; clock: IClock };
 
-import ClockDisplay from "../../Components/ClockDisplay";
+import ClockDisplay from "../../Shared/Components/ClockDisplay";
 
 // static data for a display
 function makeClockDisplayData(key: number, clock: IClock): ClockDisplayData {

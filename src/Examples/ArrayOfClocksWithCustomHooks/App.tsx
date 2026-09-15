@@ -3,7 +3,7 @@ import { Heading, Table, Tbody, VStack } from "@chakra-ui/react";
 import { makeClockDisplay, makeTableRow } from "./DisplayHelpers";
 
 // import the custom hook
-import useClockDisplayList from "./useClockDisplayList original";
+import useClockDisplayList from "./useClockDisplayList";
 
 export default function App() {
   const { handleAdd, handleDelete, clockDisplayData, clock } = useClockDisplayList();

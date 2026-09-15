@@ -2,13 +2,13 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
 // import { Clock } from '../../Classes/Clock'
-import { type IClock } from "../../types";
-import useClockDisplayList from "./useClockDisplayList original";
+import { type IClock } from "../../Shared/types";
+import useClockDisplayList from "./useClockDisplayList";
 
 // hmm, can this be refactored more to get rid of the formatting
 type ClockDisplayData = { key: number; name: string };
 
-import ClockDisplay from "./ClockDisplay";
+import ClockDisplay from "../../Shared/Components/ClockDisplay";
 
 // static data for a display
 function makeClockDisplayData(key: number): ClockDisplayData {

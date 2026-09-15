@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { type IClock } from "../types";
-import { useClock } from "../Hooks/useClock";
+import { type IClock } from "../Shared/types";
+import { useClock } from "../Shared/Hooks/useClock";
 import { Box, Button, Heading, HStack, VStack, IconButton } from "@chakra-ui/react";
 import {
   AiFillDelete,

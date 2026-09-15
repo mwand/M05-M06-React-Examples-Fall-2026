@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
-import SingletonClockFactory from "../../Classes/SingletonClockFactory";
-import { type IClock } from "../../types";
+import SingletonClockFactory from "../../Shared/Classes/SingletonClockFactory";
+import { type IClock } from "../../Shared/types";
 
 //
 type ClockDisplayData = { key: number; name: string };
 
-import ClockDisplay from "./ClockDisplay";
+import ClockDisplay from "../../Shared/Components/ClockDisplay";
 
 // static data for a display
 function makeClockDisplayData(key: number): ClockDisplayData {
@@ -29,6 +29,15 @@ export default function useClockDisplayList() {
     setNextKey(nextKey + 1);
   }
 
+  // add a clock display for the first render
+  // this seems to work, but I'm not sure why...
+  React.useMemo(() => {
+    console.log("creating first clock display");
+    const newDisplay = makeClockDisplayData(1);
+    setClockDisplayData([newDisplay]);
+    setNextKey(2);
+  }, []);
+
   function handleDelete(targetKey: number) {
     const newList = clockDisplayData.filter((item) => item.key != targetKey);
     setClockDisplayData(newList);
@@ -43,9 +52,9 @@ export default function useClockDisplayList() {
   }
 
   // add a clock display for the first render
-  //
+  // not sure how else to fix this :(
   // eslint-disable-next-line
-    useEffect(() => {handleAdd()}, [])
+    // useEffect(() => {handleInitialAdd()}, [])
 
   return {
     handleAdd: handleAdd,

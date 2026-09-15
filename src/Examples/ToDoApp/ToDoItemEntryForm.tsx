@@ -1,5 +1,4 @@
-import * as React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Button,
   Box,
@@ -17,10 +16,9 @@ import {
   TableContainer,
   HStack,
 } from "@chakra-ui/react";
-import { AiFillDelete, AiFillHeart, AiOutlineDelete, AiOutlineHeart } from "react-icons/ai";
-import { nanoid } from "nanoid";
 
-import type { ToDoItem } from "./types";
+
+import type { ToDoItem } from "./Shared/ToDoListTypes";
 
 export function ToDoItemEntryForm(props: { onAdd: (title: string, priority: string) => void }) {
   // state variables for this form
@@ -28,7 +26,7 @@ export function ToDoItemEntryForm(props: { onAdd: (title: string, priority: stri
   const [priority, setPriority] = useState("");
   const [key, setKey] = useState(1); // key is assigned when the item is created.
 
-  function handleSubmit(event) {
+  function handleSubmit(event:React.FormEvent) {
     event.preventDefault(); // magic, sorry.
 
     if (title === "") {

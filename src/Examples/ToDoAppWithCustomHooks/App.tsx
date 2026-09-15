@@ -5,9 +5,9 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
 
-import type { ToDoItem } from "./ToDoListTypes";
+import type { ToDoItem } from "../ToDoApp/Shared/ToDoListTypes";
 import { ToDoItemEntryForm } from "./ToDoItemEntryForm";
-import { ToDoListDisplay } from "./ToDoListDisplay";
+import { ToDoListDisplay } from "../ToDoApp/Shared/ToDoListDisplay";
 import useToDoItemList from "./useToDoItemList";
 
 export default function ToDoApp() {

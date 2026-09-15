@@ -2,22 +2,36 @@ import * as React from "react";
 import { createRoot } from "react-dom/client";
 import { ChakraProvider } from "@chakra-ui/react";
 
-// import App from './Apps/ToDoApp/ToDoApp'
-// import App from './Apps/SimpleClockDisplayApp'
-// import App from './Apps/ArrayOfClocksApp'
-// import App from './Apps/useEffect-demoWithCleanUps'
-// import App from './Apps/SimpleClockDisplayApp'
-// import App from './Apps/TwoCountingButtonsInAList/Root'
 
-// below here are addresses under new organization src/Apps/...
-// change ./Apps to ./Apps/<appname>/App
-// import App from './Apps/ThreeClocks/App'
-// import App from './Apps/useEffect-demo'
-// import App from "./Apps/useEffect-demoWithCleanUps";
 
-// import App from "./Components/SimplestState"
-// import App from "./Components/HelloWorld";
-import App from "./Components/HelloWorldAveryAndDave"
+// pick one example to mount as the App. Files live under src/Examples/...,
+// grouped by concept; a "WithCustomHooks" (or similarly-suffixed) sibling
+// is a later stage of the same example. Shared building blocks used by
+// more than one example live under src/Shared/.
+
+// import App from "./Examples/HelloWorld"
+// import App from "./Examples/HelloWorldWithName"
+// import App from "./Examples/HelloWorldAveryAndDave"
+
+// import App from "./Examples/SimplestState"
+// import App from "./Examples/SimplestStatePlus3"
+
+// import App from "./Examples/SimpleClockDisplay"
+// import App from "./Examples/SimpleClockDisplayWithUseClock"
+
+// import App from "./Examples/TwoCountingButtons"
+// import App from "./Examples/TwoCountingButtonsInAList/App"
+
+// import App from "./Examples/ThreeClocks/App"
+
+// import App from "./Examples/ArrayOfClocks/App"
+// import App from "./Examples/ArrayOfClocksWithCustomHooks/App"
+
+import App from "./Examples/ToDoApp/App"
+// import App from "./Examples/ToDoAppWithCustomHooks/App"
+
+// import App from "./Examples/useEffect-demo"
+// import App from "./Examples/useEffect-demoWithCleanUps"
 
 function Root() {
   return (

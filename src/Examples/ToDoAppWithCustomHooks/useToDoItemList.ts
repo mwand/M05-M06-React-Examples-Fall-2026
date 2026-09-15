@@ -5,11 +5,11 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
 
-import { type ToDoItem } from "./types";
+import { type ToDoItem } from "../ToDoApp/Shared/ToDoListTypes";
 import { ToDoItemEntryForm } from "./ToDoItemEntryForm";
-import { ToDoListDisplay } from "./ToDoListDisplay";
+import { ToDoListDisplay } from "../ToDoApp/Shared/ToDoListDisplay";
 
-export default function ToDoApp() {
+export default function useToDoItemList() {
   const [todoList, setTodolist] = useState<ToDoItem[]>([]);
   const [itemKey, setItemKey] = useState<number>(0); // first unused key
 
@@ -26,11 +26,14 @@ export default function ToDoApp() {
     setTodolist(newList);
   }
 
-  return (
-    <VStack>
-      <Heading>TODO List</Heading>
-      <ToDoItemEntryForm onAdd={handleAdd} />
-      <ToDoListDisplay items={todoList} onDelete={handleDelete} />
-    </VStack>
-  );
+  return { todoList: todoList, handleAdd: handleAdd, handleDelete: handleDelete };
 }
+
+//   return (
+//   <VStack>
+//     <Heading>TODO List</Heading>
+//     <ToDoItemEntryForm onAdd={handleAdd}/>
+//     <ToDoListDisplay items={todoList} onDelete={handleDelete}/>
+//   </VStack>
+//   )
+// }

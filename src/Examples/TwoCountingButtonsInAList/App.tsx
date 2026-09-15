@@ -10,7 +10,7 @@ import { useState } from "react";
 import { Box, VStack } from "@chakra-ui/react";
 
 // create two CountingButtons, and keep track of the total count.
-import { CountingButton } from "./CountingButton";
+import { CountingButton } from "../../Shared/Components/CountingButton";
 
 type CountingButtonData = { key: number; name: string };
 

@@ -9,7 +9,7 @@ import {
   AiFillPlusCircle,
   AiOutlinePlus,
 } from "react-icons/ai";
-import SingletonClockFactory from "../Classes/SingletonClockFactory";
+import SingletonClockFactory from "../Shared/Classes/SingletonClockFactory";
 
 export function ClockDisplay(props: {
   name: string;

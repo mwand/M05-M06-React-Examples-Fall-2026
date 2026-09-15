@@ -5,11 +5,11 @@ import * as React from "react";
 import { useState, useEffect } from "react";
 import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
 
-import { type ToDoItem } from "./ToDoListTypes";
+import { type ToDoItem } from "./Shared/ToDoListTypes";
 import { ToDoItemEntryForm } from "./ToDoItemEntryForm";
-import { ToDoListDisplay } from "./ToDoListDisplay";
+import { ToDoListDisplay } from "./Shared/ToDoListDisplay";
 
-export default function useToDoItemList() {
+export default function ToDoApp() {
   const [todoList, setTodolist] = useState<ToDoItem[]>([]);
   const [itemKey, setItemKey] = useState<number>(0); // first unused key
 
@@ -18,7 +18,7 @@ export default function useToDoItemList() {
       return;
     } // ignore blank button presses
     setTodolist(todoList.concat({ title: title, priority: priority, key: itemKey }));
-    setItemKey(itemKey + 1);
+    setItemKey(itemKey => itemKey + 1);
   }
 
   function handleDelete(targetKey: number) {
@@ -26,14 +26,11 @@ export default function useToDoItemList() {
     setTodolist(newList);
   }
 
-  return { todoList: todoList, handleAdd: handleAdd, handleDelete: handleDelete };
+  return (
+    <VStack>
+      <Heading>TODO List</Heading>
+      <ToDoItemEntryForm onAdd={handleAdd} />
+      <ToDoListDisplay items={todoList} onDelete={handleDelete} />
+    </VStack>
+  );
 }
-
-//   return (
-//   <VStack>
-//     <Heading>TODO List</Heading>
-//     <ToDoItemEntryForm onAdd={handleAdd}/>
-//     <ToDoListDisplay items={todoList} onDelete={handleDelete}/>
-//   </VStack>
-//   )
-// }

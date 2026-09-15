@@ -2,8 +2,8 @@ import * as React from "react";
 import { useEffect, useState } from "react";
 import { Heading, VStack } from "@chakra-ui/react";
 
-import ClockDisplay from "../../Components/ClockDisplay";
-import SingletonClock from "../../Classes/SingletonClockFactory";
+import ClockDisplay from "../../Shared/Components/ClockDisplay";
+import SingletonClock from "../../Shared/Classes/SingletonClockFactory";
 
 function doNothing() {}
 
