@@ -1,0 +1,39 @@
+// illustrates forms, lists, etc.
+// THE WHOLE POINT OF THIS IS THE ATTRIBUTE 'key' ON LINE
+
+import * as React from "react";
+import { useState, useEffect } from "react";
+import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
+
+import { type ToDoItem } from "./ToDoListTypes";
+import { ToDoItemEntryForm } from "./ToDoItemEntryForm";
+import { ToDoListDisplay } from "./ToDoListDisplay";
+
+export default function useToDoItemList() {
+  const [todoList, setTodolist] = useState<ToDoItem[]>([]);
+  const [itemKey, setItemKey] = useState<number>(0); // first unused key
+
+  function handleAdd(title: string, priority: string) {
+    if (title === "") {
+      return;
+    } // ignore blank button presses
+    setTodolist(todoList.concat({ title: title, priority: priority, key: itemKey }));
+    setItemKey(itemKey + 1);
+  }
+
+  function handleDelete(targetKey: number) {
+    const newList = todoList.filter((item) => item.key != targetKey);
+    setTodolist(newList);
+  }
+
+  return { todoList: todoList, handleAdd: handleAdd, handleDelete: handleDelete };
+}
+
+//   return (
+//   <VStack>
+//     <Heading>TODO List</Heading>
+//     <ToDoItemEntryForm onAdd={handleAdd}/>
+//     <ToDoListDisplay items={todoList} onDelete={handleDelete}/>
+//   </VStack>
+//   )
+// }
