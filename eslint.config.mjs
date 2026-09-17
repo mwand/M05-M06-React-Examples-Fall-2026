@@ -2,7 +2,7 @@ import { defineConfig, globalIgnores } from "eslint/config";
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
 import eslintPluginPrettierRecommended from "eslint-plugin-prettier/recommended";
-import eslintPluginImport from "eslint-plugin-import";
+import eslintPluginImportX from "eslint-plugin-import-x";
 import reactHooks from "eslint-plugin-react-hooks";
 import { reactRefresh } from "eslint-plugin-react-refresh";
 
@@ -13,24 +13,24 @@ export default defineConfig([
     "**/.stryker-tmp/", // stryker mutation reports
     "**/coverage", // istanbul coverage reports
     "**/playwright-report/", // playwright test reports
-    "eslint.config.mjs", // eslint-plugin-import has trouble with this config file
+    "eslint.config.mjs", // eslint-plugin-import-x has trouble with this config file
   ]),
   {
     files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
     extends: [
       eslint.configs.recommended,
-      eslintPluginImport.flatConfigs.recommended,
-      eslintPluginImport.flatConfigs.typescript,
+      eslintPluginImportX.flatConfigs.recommended,
+      eslintPluginImportX.flatConfigs.typescript,
     ],
     settings: {
-      "import/resolver": { typescript: true },
+      "import-x/resolver": { typescript: true },
     },
     rules: {
       eqeqeq: "error",
-      "import/no-amd": "error",
-      "import/no-commonjs": "error",
-      "import/no-empty-named-blocks": "error",
-      "import/no-extraneous-dependencies": [
+      "import-x/no-amd": "error",
+      "import-x/no-commonjs": "error",
+      "import-x/no-empty-named-blocks": "error",
+      "import-x/no-extraneous-dependencies": [
         "error",
         {
           // devDependencies can be imported in config and test files
@@ -42,9 +42,9 @@ export default defineConfig([
           includeInternal: true,
         },
       ],
-      "import/no-import-module-exports": "error",
-      "import/no-named-as-default": "error",
-      "import/no-named-as-default-member": "off",
+      "import-x/no-import-module-exports": "error",
+      "import-x/no-named-as-default": "error",
+      "import-x/no-named-as-default-member": "off",
       "no-console": "warn",
       "no-param-reassign": "error",
       "no-throw-literal": "error",
