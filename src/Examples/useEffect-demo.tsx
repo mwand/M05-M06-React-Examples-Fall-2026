@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import { Heading, Button, VStack, Text } from "@chakra-ui/react";
 
 export default function App() {
-  const [n, setN] = useState(0);
-  const [m, setM] = useState(0);
+  const [i, setI] = useState(0);
+  const [j, setJ] = useState(0);
 
   // runs only on first render.
   useEffect(() => {
@@ -17,16 +17,16 @@ export default function App() {
   // })
 
   useEffect(() => {
-    console.log("useEffect #2N is run when n changes");
-  }, [n]);
+    console.log("useEffect #2I is run when i changes");
+  }, [i]);
 
   useEffect(() => {
-    console.log("useEffect #2M is run when m changes");
-  }, [m]);
+    console.log("useEffect #2J is run when j changes");
+  }, [j]);
 
   useEffect(() => {
-    console.log("useEffect #2MN is called on every render");
-  }, [m, n]);
+    console.log("useEffect #2IJ is run when either i or j changes");
+  }, [i, j]);
 
   // runs on every render
   useEffect(() => {
@@ -45,26 +45,26 @@ export default function App() {
 
   // observe that effects run in order of definition
 
-  function onClickN() {
-    console.log("Clicked n!");
-    setN((n) => n + 1);
+  function onClickI() {
+    console.log("Clicked i!");
+    setI((i) => i + 1);
   }
 
-  function onClickM() {
-    console.log("Clicked m!");
-    setM((m) => m + 1);
+  function onClickJ() {
+    console.log("Clicked j!");
+    setJ((j) => j + 1);
   }
 
   return (
     <VStack>
       <Heading>useEffect demo #1</Heading>
-      <Text> n is {n} </Text>
-      <Button onClick={onClickN}>Increment n</Button>
-      <Text> m is {m} </Text>
-      <Button onClick={onClickM}>Increment m</Button>
+      <Text> i is {i} </Text>
+      <Button onClick={onClickI}>Increment i</Button>
+      <Text> j is {j} </Text>
+      <Button onClick={onClickJ}>Increment j</Button>
     </VStack>
   );
 
-  // note: writing setN(n+1) is a bug,
-  // because n is not guaranteed to be the current value.
+  // note: writing setI(i+1) is a bug,
+  // because i is not guaranteed to be the current value.
 }
