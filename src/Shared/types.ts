@@ -10,3 +10,12 @@ export interface ITicker {
   nListeners: number;
   id: string;
 }
+
+export interface ClockDisplayProps {
+  name: string;
+  key: number;
+  clock: ITicker;
+  handleDelete?: () => void;
+  handleAdd?: () => void;
+  noisyDelete?: boolean;
+}

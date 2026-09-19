@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
+import { Button, Heading, Table, Th, Tbody, Tr, Td, VStack } from "@chakra-ui/react";
 import SingletonClockFactory from "../../Shared/Classes/Ticker";
 import { type ITicker } from "../../Shared/types";
 
 //
 type ClockDisplayData = { key: number; name: string; clock: ITicker };
 
-import ClockDisplay from "../../Shared/Components/ClockDisplay";
+import ClockDisplay from "../../Shared/Components/SimpleClockDisplay";
 
 // static data for a display
 function makeClockDisplayData(key: number, clock: ITicker): ClockDisplayData {
@@ -77,6 +77,8 @@ export default function App() {
   return (
     <VStack>
       <Heading>Array of Clock Displays (2024-09-26)</Heading>
+      <Button onClick={handleStart}>Start</Button>
+      <Button onClick={handleStop}>Stop</Button>
       <Table>
         <Tbody>
           {clockDisplayData.map((clockDisplayData) =>
