@@ -11,8 +11,8 @@ function cleanup(message: string) {
 // import { useFirstRender } from '../Hooks/useFirstRender'
 
 export default function App() {
-  const [n, setN] = useState(0);
-  const [m, setM] = useState(0);
+  const [i, setI] = useState(0);
+  const [j, setJ] = useState(0);
 
   // runs only on first render.
   useEffect(() => {
@@ -21,14 +21,14 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    console.log("useEffect #2N is run only when n changes");
-    return cleanup("useEffect #2N");
-  }, [n]);
+    console.log("useEffect #2I is run only when i changes");
+    return cleanup("useEffect #2I");
+  }, [i]);
 
   useEffect(() => {
-    console.log("useEffect #2M is run when m changes");
-    return cleanup("useEffect #2M");
-  }, [m]);
+    console.log("useEffect #2J is run when j changes");
+    return cleanup("useEffect #2J");
+  }, [j]);
 
   // runs on every render
   useEffect(() => {
@@ -49,25 +49,25 @@ export default function App() {
 
   // observe that effects run in order of definition
 
-  function onClickN() {
-    console.log("Clicked n!");
-    setN(n + 1);
+  function onClickI() {
+    console.log("Clicked i!");
+    setI(i + 1);
   }
 
-  function onClickM() {
-    console.log("Clicked m!");
-    setM(m + 1);
+  function onClickJ() {
+    console.log("Clicked j!");
+    setJ(j + 1);
   }
   return (
     <VStack>
       <Heading>useEffect demo with CleanUps</Heading>
-      <Text> n is {n} </Text>
-      <Button onClick={onClickN}>Increment n</Button>
-      <Text> m is {m} </Text>
-      <Button onClick={onClickM}>Increment m</Button>
+      <Text> i is {i} </Text>
+      <Button onClick={onClickI}>Increment i</Button>
+      <Text> j is {j} </Text>
+      <Button onClick={onClickJ}>Increment j</Button>
     </VStack>
   );
 
-  // note: writing setN(n+1) is a bug,
-  // because n is not guaranteed to be the current value.
+  // note: writing setI(i+1) is a bug,
+  // because i is not guaranteed to be the current value.
 }

@@ -33,8 +33,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 // import App from "./Examples/ToDoApp/App"
 // import App from "./Examples/ToDoAppWithCustomHooks/App"
 
-import App from "./Examples/useEffect-demo"
-// import App from "./Examples/useEffect-demoWithCleanUps"
+// import App from "./Examples/useEffect-demo"
+import App from "./Examples/useEffect-demoWithCleanUps"
 
 function Root() {
   return (
