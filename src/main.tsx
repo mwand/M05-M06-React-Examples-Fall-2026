@@ -15,10 +15,11 @@ import { ChakraProvider } from "@chakra-ui/react";
 
 // import App from "./Examples/SimplestState"
 // import App from "./Examples/SimplestStatePlus3"
+// import App from "./Examples/SimplestStatePlus3Alternate"
 
-// import App from "./Examples/SimpleClockDisplay"
 // import App from "./Examples/SimpleClockDisplayWithUseClock"
 
+import App from "./Examples/SimpleClock/App.tsx"
 // import App from "./Examples/TwoCountingButtons"
 // import App from "./Examples/TwoCountingButtonsInAList/App"
 
@@ -34,7 +35,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 // import App from "./Examples/ToDoAppWithCustomHooks/App"
 
 // import App from "./Examples/useEffect-demo"
-import App from "./Examples/useEffect-demoWithCleanUps"
+// import App from "./Examples/useEffect-demoWithCleanUps"
 
 function Root() {
   return (
